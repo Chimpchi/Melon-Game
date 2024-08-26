@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   melonName: Watermelon
   mergePoints: 22
-  scale: 2
+  scale: 3
   mass: 5
   sprite: {fileID: 21300000, guid: 72232dc1f0f84654284d0ecdc3e8da4d, type: 3}
   color: {r: 0, g: 0.5396226, b: 0.06420773, a: 1}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   melonName: Melon
   mergePoints: 20
-  scale: 1
-  mass: 1
+  scale: 2.5
+  mass: 2
   sprite: {fileID: 21300000, guid: 72232dc1f0f84654284d0ecdc3e8da4d, type: 3}
   color: {r: 0.1306969, g: 1, b: 0.066037595, a: 1}

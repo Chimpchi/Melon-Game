@@ -15,6 +15,6 @@ MonoBehaviour:
   melonName: Dekopon
   mergePoints: 8
   scale: 1
-  mass: 1
+  mass: 1.2
   sprite: {fileID: 21300000, guid: 72232dc1f0f84654284d0ecdc3e8da4d, type: 3}
   color: {r: 0.9547169, g: 0.624698, b: 0.24318251, a: 1}

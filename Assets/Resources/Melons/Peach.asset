@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   melonName: Peach
   mergePoints: 16
-  scale: 1
+  scale: 1.8
   mass: 1
   sprite: {fileID: 21300000, guid: 72232dc1f0f84654284d0ecdc3e8da4d, type: 3}
   color: {r: 0.87169814, g: 0.4325596, b: 0.6756105, a: 1}
