@@ -15,6 +15,7 @@ public class MelonManager : MonoBehaviour
     [SerializeField] private Transform nextMelonLocation;
     [SerializeField] private int melonIndexSpawnRange = -1;
     [SerializeField] private LayerMask melonLayer;
+    [field: SerializeField] public MelonPool Pool { get; private set; }
 
     public delegate void GameOver();
     public static event GameOver OnGameOver;
@@ -153,24 +154,34 @@ public class MelonManager : MonoBehaviour
 
     private Melon SpawnMelon(int index)
     {
+        //GameObject Setting
         MelonScriptObject sObject = melons[index];
-        GameObject melon = new(sObject.name);
-        melon.layer = melonLayer;
-        melon.AddComponent<CircleCollider2D>();
+        Melon melon = Pool.Get();
+        melon.mergePoints = sObject.mergePoints;
+        melon.processedCollision = false;
 
-        SpriteRenderer spriteRender = melon.AddComponent<SpriteRenderer>();
+        melon.gameObject.name = sObject.melonName;
+        melon.gameObject.layer = melonLayer;
+        melon.gameObject.AddComponent<CircleCollider2D>();
+        melon.transform.localScale = Vector3.one * sObject.scale;
+
+        //Sprite Setting
+        SpriteRenderer spriteRender = melon.gameObject.GetComponent<SpriteRenderer>();
+        if (!spriteRender)
+            spriteRender = melon.gameObject.AddComponent<SpriteRenderer>();
+
         spriteRender.sprite = sObject.sprite;
         spriteRender.color = sObject.color;
 
-        Rigidbody2D rb = melon.AddComponent<Rigidbody2D>();
+        //Rigidbody Setting
+        Rigidbody2D rb = melon.gameObject.GetComponent<Rigidbody2D>();
+        if (!rb)
+            rb = melon.gameObject.AddComponent<Rigidbody2D>();
+
         rb.isKinematic = true;
         rb.mass = sObject.mass;
 
-        melon.transform.localScale = Vector3.one * sObject.scale;
-
-        Melon melonComp = melon.AddComponent<Melon>();
-        melonComp.mergePoints = sObject.mergePoints;
-        return melonComp;
+        return melon;
     }
 
     private void OnDrawGizmosSelected()

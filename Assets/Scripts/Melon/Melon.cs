@@ -7,7 +7,7 @@ public class Melon : MonoBehaviour
     public static List<Melon> Melons = new();
 
     public int mergePoints;
-    public bool ProcessedCollision { get; private set; }
+    public bool processedCollision;
 
     public delegate void MelonEvent(Melon melon);
     public delegate void MelonMerge(int points);
@@ -63,11 +63,11 @@ public class Melon : MonoBehaviour
             return;
 
         Melon otherMelon = collision.gameObject.GetComponent<Melon>();
-        if (!otherMelon || otherMelon.ProcessedCollision || ProcessedCollision)
+        if (!otherMelon || otherMelon.processedCollision || processedCollision)
             return;
 
-        ProcessedCollision = true;
-        otherMelon.ProcessedCollision = true;
+        processedCollision = true;
+        otherMelon.processedCollision = true;
         Melon nextMelon = MelonManager.GetInstance().GetNextMelon(gameObject.name);
         if (!nextMelon)
             return;
@@ -77,8 +77,7 @@ public class Melon : MonoBehaviour
 
         OnMerge?.Invoke(mergePoints);
         nextMelon.transform.position = (transform.position + otherMelon.transform.position) * 0.5f;
-        Destroy(otherMelon.gameObject);
-        Destroy(gameObject);
+        MelonManager.GetInstance().Pool.Give(otherMelon, this);
     }
 
 }
