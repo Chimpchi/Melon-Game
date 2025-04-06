@@ -505,7 +505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 470648086}
   - component: {fileID: 470648088}
-  - component: {fileID: 470648087}
   - component: {fileID: 470648089}
   m_Layer: 5
   m_Name: Score
@@ -535,18 +534,6 @@ RectTransform:
   m_AnchoredPosition: {x: -60, y: -10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &470648087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470648085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671d0c03be2861540b7c7b374cfa4ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &470648088
 MonoBehaviour:
   m_ObjectHideFlags: 0

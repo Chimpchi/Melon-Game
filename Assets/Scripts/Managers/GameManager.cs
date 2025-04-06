@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = pausedTimeScale;
         AudioListener.pause = false;
         OnStateChange?.Invoke(currentState, state);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
 }

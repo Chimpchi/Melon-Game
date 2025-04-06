@@ -58,6 +58,11 @@ public class MelonManager : MonoBehaviour
         CachePlanetComponent();
     }
 
+    private void Start()
+    {
+        GameManager.GetInstance().SetState(GameState.Gameplay);
+    }
+
     private void OnEnable()
     {
         Melon.OnCollided += NewMelon;
@@ -85,7 +90,11 @@ public class MelonManager : MonoBehaviour
 
         currentMelon.transform.position = planetPosition;
         RaycastHit2D ray = Physics2D.Raycast(planetPosition, Vector2.down, Mathf.Infinity, melonLayer);
-        Vector3[] points = { planetPosition, new(planetPosition.x, ray.point.y, 0) };
+        //Debug.Log($"{planetPosition + 2 * currentMelon.transform.localScale * Vector2.down}, {ray.point}");
+        if (ray.point.Equals(Vector2.zero))
+            return;
+
+        Vector3[] points = { planetPosition, ray.point };
         lineRenderer.SetPositions(points);
     }
 
